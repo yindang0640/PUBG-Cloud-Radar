@@ -1,4 +1,4 @@
-﻿const appData = {
+const appData = {
   autoRefresh: true,
   refreshInterval: 1000,
   gsTime: 0,
@@ -43,13 +43,13 @@ vapp = new Vue({
     // --------------------------------------------------------------------------
 
     showBack: true,
-    showArmor2: true,
-    showHead2: true,
+    showArmor2: false,
+    showHead2: false,
     showArmor3: true,
     showHead3: true,
     showFirstAid: true,
     showMedKit: true,
-    showDrink: true,
+    showDrink: false,
     showGrenade: true,
     showSmokeBomb: false,
     showAmmo556: false,
@@ -65,7 +65,7 @@ vapp = new Vue({
     showSRSuppressor: true,
     showSRExtended: false,
     showSRStock: false,
-    showM16A4: false,
+    showM16A4: true,
     showSCAR: true,
     showAK47: false,
     showHK416: true,
@@ -676,21 +676,7 @@ const renderMap = () => {
          [loc[0] + Math.cos(radianAngle) * 512, loc[1] - Math.sin(radianAngle) * 512]]
         )
       )
-    } else { // enemy
-      if (playerObj.team) {
-        label = `${playerObj.team}`
-      } else if (playerObj.name) {
-        label = playerObj.name
-      } else {
-        label = `<${playerObj.name}>`
-      }
-      if (playerObj.kills) {
-        label += ` |杀:${playerObj.kills}|`
-      }
-    }
-    if (playerObj.health != null) {
-      label += ` |血:${Math.floor(playerObj.health)}|`
-    }
+    } 
     feature.set('_label', label)
     // re-add should be fine
     playerSource.addFeature(feature)
